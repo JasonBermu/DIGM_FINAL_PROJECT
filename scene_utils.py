@@ -10,11 +10,11 @@ trunk = cmds.polyCylinder(r=0.2, h=height, name="trunk")[0]
     cmds.move(0, height/2, 0, trunk)
     
     if tree_type == 'round':
-        foliage = cmds.polySphere(r=1.0, name="foliage")[0]
+        foliage = cmds.polySphere(r=1.0, name="canopy")[0]
     else:
-        foliage = cmds.polyCone(r=0.8, h=2.0, name="foliage")[0]
+        foliage = cmds.polyCone(r=0.8, h=2.0, name="canopy")[0]
         
-    cmds.move(0, height, 0, foliage)
+    cmds.move(0, height, 0, canopy)
     tree_grp = cmds.group(trunk, foliage, n=f"tree_{tree_type}")
     return tree_grp
 
