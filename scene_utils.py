@@ -23,6 +23,8 @@ def create_rock(scale_val=1.0):
     cmds.setAttr(f"{rock}.scale", scale_val, random.uniform(0.5, 1.5), scale_val)
     return rock
 
+def create_cabin(position = ((0,0,0), scale=1.0)
+
 def scatter_item(item_name, area_range=10):
   pos_x = random.uniform(-area_range, area_range)
     pos_z = random.uniform(-area_range, area_range)
