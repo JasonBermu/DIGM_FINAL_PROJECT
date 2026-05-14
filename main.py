@@ -1,2 +1,3 @@
 FOREST_CONFIG = [
-  {"type": "cabin", "length
+  {"type": "tree", "tree_type": "round", "height": 3.5}
+  {"type": "rock", "scale_val": 2.0}
