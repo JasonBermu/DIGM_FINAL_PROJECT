@@ -35,8 +35,28 @@ def create_cabin(pos=(0, 0, 0), scale=1.0):
 def scatter_item(item_name, area_range=10):
     pos_x = random.uniform(-area_range, area_range)
     pos_z = random.uniform(-area_range, area_range)
-    current_y = cmds.getAttr(f"{item_name}.ty")
-    cmds.move(pos_x, current_y, pos_z, item_name)
+
+    target_y = 0.0
+    
+    hills = cmds.ls("hill*", type="transform") or cmds.ls("*hill*", type="transform")
+    
+    if hills:
+        hill_mesh = hills[0]
+        
+        ray_hit = cmds.rayIntersect(hill_mesh, rayX=pos_x, rayY=100.0, rayZ=pos_z, 
+                                    directionX=0.0, directionY=-1.0, directionZ=0.0)
+        
+        if ray_hit and ray_hit[0] > 0:
+            target_y = ray_hit[1] 
+    if "rock" in item_name:
+       
+        current_scale_y = cmds.getAttr(f"{item_name}.scaleY")
+        target_y += (current_scale_y / 2.0)
+    elif "tree" in item_name:
+        
+        pass
+        
+    cmds.move(pos_x, target_y, pos_z, item_name)
     return [pos_x, pos_z]
 
 def create_hill(scale_val=5.0):
@@ -56,7 +76,7 @@ def create_sun(height=15.0):
     return sun
 
 def create_cloud():
-    # I built this cloud by grouping a few overlapping spheres together, a bit cartoony, but yeh
+    # I built this cloud by grouping a few overlapping spheres, a bit cartoony, but yeah,
     cloud_grp = cmds.group(em=True, name="cloud_grp")
     
     num_puffs = random.randint(3, 5)
