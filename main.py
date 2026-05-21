@@ -10,10 +10,10 @@ FOREST_CONFIG = {
     "ground": {
         "size": 30 },
     
-    """"hills": {
+    "hills": {
         "count": 1,
         "scale_range": (15.0, 15.0),
-        "scatter_radius": 0 },"""
+        "scatter_radius": 0 },
     
     "trees": {
         "count": 35,
