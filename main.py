@@ -11,9 +11,9 @@ FOREST_CONFIG = {
         "size": 30 },
     
     "hills": {
-        "count": 4,
-        "scale_range": (4.0, 7.0),
-        "scatter_radius": 12 },
+        "count": 1,
+        "scale_range": (15.0, 7.0),
+        "scatter_radius": 0 },
     
     "trees": {
         "count": 35,
