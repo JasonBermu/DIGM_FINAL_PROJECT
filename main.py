@@ -12,7 +12,7 @@ FOREST_CONFIG = {
     
     "hills": {
         "count": 1,
-        "scale_range": (15.0, 7.0),
+        "scale_range": (15.0, 4.0),
         "scatter_radius": 0 },
     
     "trees": {
