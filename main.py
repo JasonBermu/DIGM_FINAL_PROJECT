@@ -1,13 +1,8 @@
 import maya.cmds as cmds
 import sys
-import os
 import random
 
-package_path = os.path.dirname(__file__)
-if package_path not in sys.path:
-    sys.path.append(package_path)
-
-import utils.scene_utils as utils
+import scene_utils as utils
 import importlib
 importlib.reload(utils)
 
