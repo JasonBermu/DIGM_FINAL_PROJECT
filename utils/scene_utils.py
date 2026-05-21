@@ -47,7 +47,7 @@ def create_hill(scale_val=5.0):
     rand_z = scale_val * random.uniform(1.0, 1.8)
     
     cmds.setAttr(f"{hill}.scale", rand_x, rand_y, rand_z)
-    cmds.move(0, 0, 0, hill) 
+    cmds.move(0, -5, 0, hill) 
     return hill
 
 def create_sun(height=15.0):
