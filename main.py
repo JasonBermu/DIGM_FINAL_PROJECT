@@ -7,6 +7,9 @@ import importlib
 importlib.reload(utils)
 
 FOREST_CONFIG = {
+    "sky": {
+        "size": 100 },
+    
     "ground": {
         "size": 30 },
     
@@ -97,6 +100,9 @@ def build_from_config():
         for _ in range(cloud_cfg["count"]):
             c = utils.create_cloud()
             utils.scatter_item(c, area_range=cloud_cfg["scatter_radius"])
+
+    if "sky" in FOREST_CONFIG:
+        sky_cfg = FOREST_CONFIG["sky"]
 
     # This puts all the specific objects where you want them to go
     if "cabin" in HERO_ASSET_PLACEMENTS:
