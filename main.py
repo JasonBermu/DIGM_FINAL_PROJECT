@@ -67,6 +67,9 @@ def build_from_config():
         sun_height = FOREST_CONFIG["sun"]["height"]
         utils.create_sun(height=sun_height)
 
+    if "sky" in FOREST_CONFIG:
+        sky_cfg = FOREST_CONFIG["sky"]
+
     # Build and Scatter the procedural generate models, trees, rocks, hills, stuff like that
     if "hills" in FOREST_CONFIG:
         hill_cfg = FOREST_CONFIG["hills"]
@@ -100,9 +103,6 @@ def build_from_config():
         for _ in range(cloud_cfg["count"]):
             c = utils.create_cloud()
             utils.scatter_item(c, area_range=cloud_cfg["scatter_radius"])
-
-    if "sky" in FOREST_CONFIG:
-        sky_cfg = FOREST_CONFIG["sky"]
 
     # This puts all the specific objects where you want them to go
     if "cabin" in HERO_ASSET_PLACEMENTS:
