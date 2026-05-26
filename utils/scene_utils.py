@@ -1,6 +1,11 @@
 import maya.cmds as cmds
 import random
 
+def create_sky(size=30):
+    sky = cmds.polySphere(radius = size, name="sky")[0]
+    cmds.polyNormal(sky, normalMode=0)
+    return sky
+
 def create_ground(size=20):
     ground = cmds.polyPlane(w=size, h=size, name="forest_floor")[0]
     return ground
