@@ -2,7 +2,7 @@ import maya.cmds as cmds
 import random
 
 def create_sky(size=100):
-    sky = cmds.polySphere(size = radius, name="sky")[0]
+    sky = cmds.polySphere(radius = size, name="sky")[0]
     cmds.polyNormal(sky, normalMode=0)
     return sky
 
