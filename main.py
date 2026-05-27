@@ -69,6 +69,7 @@ def build_from_config():
 
     if "sky" in FOREST_CONFIG:
         sky_cfg = FOREST_CONFIG["sky"]
+        utils.create_sky(size=sky_cfg)
 
     # Build and Scatter the procedural generate models, trees, rocks, hills, stuff like that
     if "hills" in FOREST_CONFIG:
