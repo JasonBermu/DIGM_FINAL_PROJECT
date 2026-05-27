@@ -68,7 +68,7 @@ def build_from_config():
         utils.create_sun(height=sun_height)
 
     if "sky" in FOREST_CONFIG:
-        sky_cfg = FOREST_CONFIG["sky"]
+        sky_cfg = FOREST_CONFIG["sky"]["size"]
         utils.create_sky(size=sky_cfg)
 
     # Build and Scatter the procedural generate models, trees, rocks, hills, stuff like that
