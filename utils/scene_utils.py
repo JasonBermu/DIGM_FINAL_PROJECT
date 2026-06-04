@@ -27,7 +27,8 @@ def create_tree(tree_type='round', height=2.0):
 def create_rock(scale_val=1.0):
     rock = cmds.polyCube(n="rock")[0]
     rand_y = random.uniform(0.5, 1.5)
-    cmds.setAttr(f"{rock}.scale", scale_val, rand_y, scale_val)
+
+    cmds.scale(scale_val, rand_y, scale_val, rock)
     cmds.move(0, rand_y / 2, 0, rock)
     return rock
 
@@ -51,28 +52,26 @@ def create_hill(scale_val=5.0):
     rand_y = scale_val * random.uniform(0.3, 0.6) 
     rand_z = scale_val * random.uniform(1.0, 1.8)
     
-    cmds.setAttr(f"{hill}.scale", rand_x, rand_y, rand_z)
+    cmds.scale(rand_x, rand_y, rand_z, hill)
     cmds.move(0, -5, 0, hill) 
     return hill
 
 def create_sun(height=15.0):
-    sun = cmds.polySphere(r=1.5, name="stylized_sun")[0]
+    sun = cmds.polySphere(r=1.5, name="stylize_sun")[0]
     cmds.move(0, height, 0, sun)
     return sun
 
 def create_cloud():
-    # I built this cloud by grouping a few overlapping spheres, a bit cartoony, but yeah,
     cloud_grp = cmds.group(em=True, name="cloud_grp")
     
     num_puffs = random.randint(3, 5)
     for i in range(num_puffs):
-        puff = cmds.polySphere(r=random.uniform(0.6, 1.2), name=f"cloud_puff_{i}")[0]
+        
+        puff = cmds.polySphere(r=random.uniform(0.6, 1.2), name="cloud_puff")[0]
       
         cmds.move(random.uniform(-1.0, 1.0), random.uniform(-0.2, 0.2), random.uniform(-0.5, 0.5), puff)
         cmds.parent(puff, cloud_grp)
         
-    # Keep the cloud pivot clean at the center of the group, so the whole thing will move together, and not be a mess of spheres
     cmds.xform(cloud_grp, cp=True)
-    # Moving it to a baseline sky height so it doesn't smash into the trees or any of the object
-    cmds.move(0, random.uniform(10.0, 14.0), 0, cloud_grp)
+    cmds.move(random.uniform(0, 5), random.uniform(10.0, 14.0), random.uniform(0, 5), cloud_grp)
     return cloud_grp
