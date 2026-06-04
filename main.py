@@ -42,14 +42,6 @@ HERO_ASSET_PLACEMENTS = {
     "cabin": {
         "position": (0, 0, 0),
         "scale": 1.2
-    },
-    "chopping_block": {
-        "position": (3.5, 0, 2.0)
-    },
-    "stump_with_axe": {
-        "position": (4.5, 0, 1.5)
-    }
-}
 
 def build_from_config():
     """
