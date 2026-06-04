@@ -44,10 +44,8 @@ HERO_ASSET_PLACEMENTS = {
         "scale": 1.2
 
 def build_from_config():
-    """
-    Iterates through FOREST_CONFIG and calls the 
-    matching builder functions from scene_utils.
-    """
+    #Iterates through FOREST_CONFIG and calls the matching builder functions from scene_utils.
+
     cmds.file(new=True, force=True)
     
     # These are for foundational pieces from the world that don't really change unless you want them to be bigger
