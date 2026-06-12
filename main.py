@@ -10,7 +10,8 @@ importlib.reload(utils)
 DEFAULT_CONFIG = {
     "sky": {
         "size": 100 },
-    
+    #This is the part of the script that my swap partner added, the sky box
+
     "ground": {
         "size": 30 },
     
