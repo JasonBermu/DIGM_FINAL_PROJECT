@@ -43,8 +43,9 @@ HERO_ASSET_PLACEMENTS = {
     "cabin": {
         "position": (0, 0, 0),
         "scale": 1.2
-    } # <-- Added the missing closing bracket here so the script runs!
+    }
 }
+
 
 def build_from_config(FOREST_CONFIG=None):
     #Iterates through FOREST_CONFIG and calls the matching builder functions from scene_utils.
