@@ -2,6 +2,10 @@ import maya.cmds as cmds
 import random
 
 def create_sky(size=100):
+
+    if size <= 0:
+        cmds.error("Sky size must be greater than zero.")
+        
     sky = cmds.polySphere(radius = size, name="sky")[0]
     cmds.polyNormal(sky, normalMode=0)
     return sky
@@ -11,6 +15,9 @@ def create_ground(size=20):
     return ground
 
 def create_tree(tree_type='round', height=2.0):
+    if height <= 0:
+        cmds.error("Tree height must be greater than zero.")
+
     trunk = cmds.polyCylinder(r=0.2, h=height, name="trunk")[0]
     cmds.move(0, height/2, 0, trunk)
     
@@ -39,6 +46,13 @@ def create_cabin(pos=(0, 0, 0), scale=1.0):
     return cabin
 
 def scatter_item(item_name, area_range=10):
+    # Input Validation and Error Handling required by rubric
+    if area_range < 0:
+        cmds.error("Scatter area range cannot be negative.")
+    if not cmds.objExists(item_name):
+        cmds.warning(f"Object {item_name} does not exist. Skipping.")
+        return None
+
     pos_x = random.uniform(-area_range, area_range)
     pos_z = random.uniform(-area_range, area_range)
     current_y = cmds.getAttr(f"{item_name}.ty")
@@ -66,12 +80,11 @@ def create_cloud():
     
     num_puffs = random.randint(3, 5)
     for i in range(num_puffs):
-        
         puff = cmds.polySphere(r=random.uniform(0.6, 1.2), name="cloud_puff")[0]
-      
         cmds.move(random.uniform(-1.0, 1.0), random.uniform(-0.2, 0.2), random.uniform(-0.5, 0.5), puff)
         cmds.parent(puff, cloud_grp)
         
     cmds.xform(cloud_grp, cp=True)
+    
     cmds.move(random.uniform(0, 5), random.uniform(10.0, 14.0), random.uniform(0, 5), cloud_grp)
     return cloud_grp
