@@ -88,3 +88,6 @@ def create_cloud():
     
     cmds.move(random.uniform(0, 5), random.uniform(10.0, 14.0), random.uniform(0, 5), cloud_grp)
     return cloud_grp
+
+#Everything above this line is the definitions or builds for all the objects within the scene. They are bases that can give shape,
+#which can be changed in a dictionary to make a tree, rock, cloud, etc. Smaller or bigger
