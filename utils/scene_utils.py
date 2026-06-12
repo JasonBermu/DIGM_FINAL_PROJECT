@@ -1,6 +1,7 @@
 import maya.cmds as cmds
 import random
 
+#This is the part of the script that my swap partner added, the sky box
 def create_sky(size=100):
 
     if size <= 0:
@@ -46,7 +47,6 @@ def create_cabin(pos=(0, 0, 0), scale=1.0):
     return cabin
 
 def scatter_item(item_name, area_range=10):
-    # Input Validation and Error Handling required by rubric
     if area_range < 0:
         cmds.error("Scatter area range cannot be negative.")
     if not cmds.objExists(item_name):
@@ -74,7 +74,7 @@ def create_sun(height=15.0):
     sun = cmds.polySphere(r=1.5, name="stylize_sun")[0]
     cmds.move(0, height, 0, sun)
     return sun
-
+    
 def create_cloud():
     cloud_grp = cmds.group(em=True, name="cloud_grp")
     
