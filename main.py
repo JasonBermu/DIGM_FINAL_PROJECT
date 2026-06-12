@@ -6,7 +6,8 @@ import scene_utils as utils
 import importlib
 importlib.reload(utils)
 
-FOREST_CONFIG = {
+# We keep your exact dictionary, but let it be a default so the UI can override it later
+DEFAULT_CONFIG = {
     "sky": {
         "size": 100 },
     
@@ -42,9 +43,13 @@ HERO_ASSET_PLACEMENTS = {
     "cabin": {
         "position": (0, 0, 0),
         "scale": 1.2
+    } # <-- Added the missing closing bracket here so the script runs!
+}
 
-def build_from_config():
+def build_from_config(FOREST_CONFIG=None):
     #Iterates through FOREST_CONFIG and calls the matching builder functions from scene_utils.
+    if FOREST_CONFIG is None:
+        FOREST_CONFIG = DEFAULT_CONFIG
 
     cmds.file(new=True, force=True)
     
